@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<div class="container"  xmlns:th="http://www.thymeleaf.org">
+
+    <div class="row" >
+
+
+        <div th:each="prod : ${product}" class="row" style="margin-bottom: 15px;margin-top: 20px">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <img  th:src="${prod.image}" style="width: 300px;height: 200px;" class="img-responsive" />
+            </div>
+
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6">
+                <h2 th:text="${prod.name}" style="color: #3d8b3d;"></h2>
+                <h3 th:text="${prod.description}" ></h3>
+                <br />
+                <br />
+                <hr/>
+            </div>
+
+
+
+
+        </div>
+    <!-- END CAROUSEL -->
+    </div>
+</div>
