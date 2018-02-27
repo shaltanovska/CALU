@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Stormpath is Joining Okta
 We are incredibly excited to announce that [Stormpath is joining forces with Okta](https://stormpath.com/blog/stormpaths-new-path?utm_source=github&utm_medium=readme&utm-campaign=okta-announcement). Please visit [the Migration FAQs](https://stormpath.com/oktaplusstormpath?utm_source=github&utm_medium=readme&utm-campaign=okta-announcement) for a detailed look at what this means for Stormpath users.
 
@@ -55,3 +56,6 @@ $ curl -X POST -H "Content-Type:application/json" -d '{ "firstName" : "Karl", "l
 
 MIT
 
+=======
+# CALU
+>>>>>>> 490109d2eaea18663d23382913756dd3ab4972e2
