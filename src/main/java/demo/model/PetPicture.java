@@ -11,7 +11,7 @@ public class PetPicture {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  public Long id;
+  public int id;
 
   @Embedded
   public FileEmbeddable picture;

@@ -1,33 +1,34 @@
 package demo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.sql.Blob;
 
 @Entity
+@Table(name="Pet")
 public class Pet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    public int id;
 
-    private String firstName;
-    private String lastName;
+    @Column
+    public String name;
 
-    public String getFirstName() {
-        return firstName;
-    }
+    @Column(length=5000)
+    public String description;
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+    @Column
+    public String sex;
 
-    public String getLastName() {
-        return lastName;
-    }
+    @Column
+    public String age;
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    @Column
+    public String category;
+
+//    @Column
+//    public Blob image;
+
+
+
 }

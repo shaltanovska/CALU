@@ -1,12 +1,15 @@
 package demo.web;
 
+import demo.model.Pet;
 import demo.model.PetPicture;
+import demo.service.PetService;
 import demo.service.QueryService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -23,7 +26,7 @@ public class Kontroler {
     QueryService queryService;
 
 
-
+  PetService petService;
 
 
 
@@ -78,6 +81,31 @@ public class Kontroler {
         out.close();
     }
 
+    @RequestMapping(value = {"/pet"}, method = RequestMethod.POST)
+    public String createPet(Model model,
+                                @RequestParam String name,
+                                @RequestParam String description,
+                                @RequestParam String sex,
+                                @RequestParam String age,
+                                @RequestParam String category
+                              //  MultipartFile picture
+    ) throws IOException, SQLException {
+
+        Pet product = petService.createPet(
+                name,
+                description,
+                sex,
+                age,
+                category
+
+        );
+      //  petService.addPetPicture(product.id, picture.getBytes(), picture.getContentType());
+
+        // storeManagementService.createdetails(description,product);
+
+        model.addAttribute("product", product);
+        return "index";
+    }
 
 
 }
