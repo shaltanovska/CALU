@@ -2,7 +2,7 @@ package demo.repository.impl;
 
 import demo.model.Pet;
 import demo.repository.QueryRepository;
-import demo.repository.TaskRepository;
+import demo.repository.PetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Repository;
 public class QueryRepositoryImpl  implements QueryRepository {
 
 
-    TaskRepository mestoRepository;
+    PetRepository mestoRepository;
 
     @Autowired
-    public QueryRepositoryImpl(TaskRepository bookRepository) {
+    public QueryRepositoryImpl(PetRepository bookRepository) {
 
         this.mestoRepository = bookRepository;
     }

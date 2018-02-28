@@ -1,10 +1,17 @@
 package demo.web;
 
+import demo.model.PetPicture;
 import demo.service.QueryService;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.sql.SQLException;
 
 /**
  * Created by Aleksandar on 21.06.2017.
@@ -51,68 +58,26 @@ public class Kontroler {
     }
 
 
+    @RequestMapping(value = {"/pet/{id}/picture"}, method = RequestMethod.GET)
+    @ResponseBody
+    public void image(@PathVariable Long id, HttpServletResponse response) throws IOException, SQLException {
+        OutputStream out = response.getOutputStream();
 
+        PetPicture petPicture = queryService.getByMestoId(id);
 
+        String contentDisposition = String.format("inline;filename=\"%s\"",
+                petPicture.picture.fileName + ".png?productId=" + id);
 
-//        TmestoPicture bookPicture = queryService.getByMestoId(id);
-//
-//        String contentDisposition = String.format("inline;filename=\"%s\"",
-//                bookPicture.picture.fileName + ".png?productId=" + id);
-//
-//        response.setHeader("Content-Disposition", contentDisposition);
-//        response.setContentType(bookPicture.picture.contentType);
-//        response.setContentLength(bookPicture.picture.size);
-//
-//        IOUtils.copy(bookPicture.picture.data.getBinaryStream(), out);
-//
-//        out.flush();
-//        out.close();
-//    }
+        response.setHeader("Content-Disposition", contentDisposition);
+        response.setContentType(petPicture.picture.contentType);
+        response.setContentLength(petPicture.picture.size);
 
-//    @RequestMapping(value = {"/category/{categoryId}"}, method = RequestMethod.GET)
-//    public String categoryProducts(
-//            @PathVariable Long categoryId,
-//         //  @RequestParam Long categoryId,
-//            Model model
-//    ) {
-//        Page<Tmesto> page = queryService.getMestaInCategory(
-//                categoryId, 0, 20
-//        );
-//
-//        model.addAttribute("product", page);
-//        model.addAttribute("pageFragment","mesta");
-//        return "index";
-//    }
+        IOUtils.copy(petPicture.picture.data.getBinaryStream(), out);
 
+        out.flush();
+        out.close();
+    }
 
-//    @RequestMapping(value = {"/category"}, method = RequestMethod.GET)
-//    public String listbyCategory(
-//            // @PathVariable Long categoryId,
-//            @RequestParam Long categoryId,
-//            Model model
-//    ) {
-//        Page<Tmesto> page = queryService.getMestaInCategory(
-//                categoryId, 0, 20
-//        );
-//
-//        model.addAttribute("product", page);
-//        model.addAttribute("pageFragment","mesta");
-//        return "index";
-//    }
-
-//    @RequestMapping(value = {"/search"}, method = RequestMethod.GET)
-//    public String search(
-//            @RequestParam String query,
-//            Model model
-//    ) {
-//        List<Tmesto> books = queryService.searchMesto(query);
-//
-//        model.addAttribute("pageFragment","mesta");
-//        model.addAttribute("product", books);
-//        model.addAttribute("query", query);
-//
-//        return "index";
-//    }
 
 
 }
