@@ -2,6 +2,7 @@ package demo.web;
 
 import demo.model.Pet;
 import demo.model.PetPicture;
+import demo.repository.PetRepository;
 import demo.service.PetService;
 import demo.service.QueryService;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
@@ -25,7 +26,10 @@ public class Kontroler {
     @Autowired
     QueryService queryService;
 
+    @Autowired
+    PetRepository petRepository;
 
+  @Autowired
   PetService petService;
 
 
@@ -40,35 +44,89 @@ public class Kontroler {
         return "index";
     }
 
+
+    @RequestMapping(value = {"/pets"}, method = RequestMethod.GET)
+    public String pets(Model model) {
+
+        model.addAttribute("product",queryService.findsite());
+
+        model.addAttribute("pageFragment", "pets");
+
+        return "index";
+    }
+
+
     @RequestMapping(value = {"/kontakt"}, method = RequestMethod.GET)
     public String kontakt(Model model) {
 
-        //   model.addAttribute("product",queryService.findsite());
 
           model.addAttribute("pageFragment", "kontakt");
 
         return "index";
     }
 
-    @RequestMapping(value = {"/tvojpredlog"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/yourpet"}, method = RequestMethod.GET)
     public String tvojpredlog(Model model) {
 
-        //   model.addAttribute("product",queryService.findsite());
 
-          model.addAttribute("pageFragment", "tvojpredlog");
+          model.addAttribute("pageFragment", "yourpet");
 
+        return "index";
+    }
+
+
+
+
+    @RequestMapping(value = {"/pet"}, method=RequestMethod.GET)
+    public String showpets(Model model){
+
+        model.addAttribute("product",queryService.findsite());
+        model.addAttribute("pageFragment", "pets");
+        return "index";
+    }
+
+
+    @RequestMapping(value = {"/pet"}, method = RequestMethod.POST)
+    public String createPet(Model model,
+                                @RequestParam String name,
+                                @RequestParam String description,
+                                @RequestParam String gender,
+                                @RequestParam String age,
+                                @RequestParam String category,
+                                @RequestParam String email,
+                                MultipartFile picture
+    ) throws IOException, SQLException {
+
+
+        Pet pet = petService.createPet(
+
+                name,
+                description,
+                gender,
+                age,
+                category,
+                email
+       );
+
+
+
+        petService.addPetPicture(pet.id, picture.getBytes(), picture.getContentType());
+
+
+        model.addAttribute("product", pet);
+      //  model.addAttribute("pageFragment", "pets");
         return "index";
     }
 
 
     @RequestMapping(value = {"/pet/{id}/picture"}, method = RequestMethod.GET)
     @ResponseBody
-    public void image(@PathVariable Long id, HttpServletResponse response) throws IOException, SQLException {
+    public void image(@PathVariable Integer id, HttpServletResponse response) throws IOException, SQLException {
         OutputStream out = response.getOutputStream();
 
         PetPicture petPicture = queryService.getByMestoId(id);
 
-        String contentDisposition = String.format("inline;filename=\"%s\"",
+        String contentDisposition = String.format("inline;filename=\"%s\" ",
                 petPicture.picture.fileName + ".png?productId=" + id);
 
         response.setHeader("Content-Disposition", contentDisposition);
@@ -80,32 +138,5 @@ public class Kontroler {
         out.flush();
         out.close();
     }
-
-    @RequestMapping(value = {"/pet"}, method = RequestMethod.POST)
-    public String createPet(Model model,
-                                @RequestParam String name,
-                                @RequestParam String description,
-                                @RequestParam String sex,
-                                @RequestParam String age,
-                                @RequestParam String category
-                              //  MultipartFile picture
-    ) throws IOException, SQLException {
-
-        Pet product = petService.createPet(
-                name,
-                description,
-                sex,
-                age,
-                category
-
-        );
-      //  petService.addPetPicture(product.id, picture.getBytes(), picture.getContentType());
-
-        // storeManagementService.createdetails(description,product);
-
-        model.addAttribute("product", product);
-        return "index";
-    }
-
 
 }

@@ -3,28 +3,31 @@
     <div class="panel-title">
         Внеси податоци:
     </div><br/>
-    <form th:action="@{/pets}"
-          enctype="application/xml"
+    <form th:action="@{/pet}"
+          enctype="multipart/form-data"
           method="POST"
-          xmlns:th="http://www.thymeleaf.org">
+          xmlns:th="http://www.thymeleaf.org"  >
 
 
-        Внеси име: <input type="text" name="name" class="form-control"> </input>
+
+        Внеси име: <input type="text" name="name" class="form-control" > </input>
         <br/>
         Description: <textarea type="text" name="description" class="form-control"> </textarea><br/>
 
-        Внеси пол: <input type="text" name="sex" class="form-control"> </input>
+        Внеси пол: <input type="text" name="gender" class="form-control"> </input>
         <br/>
         Внеси возраст: <input type="text" name="age" class="form-control"> </input>
         <br/>
         Внеси категорија: <input type="text" name="category" class="form-control"> </input>
+        <br/>
+        Внеси mail: <input type="text" name="email" class="form-control"> </input>
         <br/>
 
 
 
 
         <br/><br/>
-        <!--Избери слика(png): <input type="file" name="picture"  /><br/>-->
+        Избери слика(png): <input type="file" name="picture"  /><br/>
 
         <input type="submit" class="btn btn-primary"/>
 

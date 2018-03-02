@@ -3,38 +3,88 @@
 
 <head>
 
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <title>PetHouse</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        .navbar-brand > img
+        {
+            padding: 0 1px 7px;
+        }
 
+        .navbar-fixed-top {
+            min-height: 60px;
+        }
+        .glyphicon {
+            font-size: 14px;
+        }
+        footer
+        {
+            padding: 15px;
+        }
 
+        .img-footer
+        {
+            height:40px;
+            width:40px;
+        }
 
+        .navbar-fixed-top {
+            min-height: 60px;
+        }
+        body {
+
+            background-color: rgb(255,255,138);
+        }
+    </style>
 
 </head>
 
 <body>
 
-<div id="wrapper">
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:black">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/index.html"><img src="logo.png" height="40" /></a>
+        </div>
+        <ul class="nav navbar-nav navbar-right" >
+            <li><a href="/index.html"><font color="#ff8031">Home</font></a></li>
+            <li><a href="/pets"><font color="#ff8031">Find your pet</font></a></li>
+            <li><a href="/kontakt"><font color="#ff8031">About</font></a></li>
+        </ul>
+    </div>
+</nav>
 
-<h2>CALU</h2>
-    <div id="page-wrapper" style="padding: 20px;">
 
 
+
+<br /><br />
 
         <div th:replace="fragments/page::${pageFragment!=null? pageFragment : 'home'}" ></div>
 
 
 
 
+<footer id="footer" style="background-color:#ff8031" >
+    <div class="container-fluid">
+        <div class="row" >
+            <h4 class="text-center"><i>You can find more about our mission by following us on the social media.</i></h4>
+            <br />
+            <ul class="list-inline text-center">
+                <li><a rel="nofollow" href="http://www.twitter.com" title="Twitter"><img class="img-footer" src="twitter.png" /></a>&nbsp;</li>
+                <li><a rel="nofollow" href="http://www.facebook.com" title="Facebook"><img class="img-footer" src="facebook.png" /></a>&nbsp;</li>
+                <li><a rel="nofollow" href="http://www.instagram.com" title="Instagram"><img class="img-footer" src="instagram.png"/></a></li>
+                <li><a rel="nofollow" href="http://www.youtube.com" title="You Tube"><img class="img-footer" src="youtube.png" /></a>&nbsp;</li>
 
+            </ul>
+        </div>
+        <br/>
+    </div>
+</footer>
 
-
-
-</div>
-
-</div>
 </body>
 
 </html>

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
  * Created by Aleksandar on 21.06.2017.
  */
 @Repository
-public interface PetPictureRepository extends CrudRepository<PetPicture, Long> {
+public interface PetPictureRepository extends CrudRepository<PetPicture, Integer> {
 
-  PetPicture findById(Long id);
+  PetPicture findById(Integer id);
 }

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+<div class="container"  xmlns:th="http://www.thymeleaf.org" style="background-color: white">
+    <br /><br />
+
+    <div class="jumbotron" style="background-color:#ff8031">
+
+        <h2>Make one of these guys happy!</h2>
+        <p>Type something in the input field to search the list for specific pets:</p>
+        <input class="form-control glyphicon" id="myInput" type="text" placeholder="Search..." />
+
+
+    </div>
+
+    <br />
+
+
+<div id="myTable">
+    <div th:each="prod : ${product}" class="row" style="margin-bottom: 15px;margin-top: 20px">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+    <img th:src="@{/pet/{id}/picture(id=${prod.id})}" style="width: 300px;height: 200px;" class="img-responsive" />
+    </div>
+
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-6">
+    <h4 style="color:#ff8031">Name:<span th:text="${prod.name}" ></span></h4>
+    <h4 style="color:#ff8031"> Short description: <span th:text="${prod.description}"></span> </h4>
+        <h4 style="color:#ff8031">Gender: <span th:text="${prod.gender}"></span></h4>
+        <h4 style="color:#ff8031">Age: <span th:text="${prod.age}"></span></h4>
+        <h4 style="color:#ff8031">Type: <span th:text="${prod.category}"></span></h4>
+        <h4 style="color:#ff8031">Contact: <span th:text="${prod.email}"></span></h4>
+    <br />
+    <br />
+    <hr/>
+    </div>
+    </div>
+    </div>
+
+
+
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#myTable div").filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+        });
+    });
+</script>
+
+<!--<table class="table" id="myTable">-->
+<!--<tbody>-->
+<!--<tr>-->
+<!--<td><img src="eva.jpg" style="width:100px; height:100px" alt="Image" /></td>-->
+<!--<td><ul>-->
+<!--<li>Name: baza</li>-->
+<!--<li>Type</li>-->
+<!--<li>Gender: baza</li>-->
+<!--<li>Short description: baza</li>-->
+<!--</ul></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><img src="elena.jpg" style="width:100px; height:100px" alt="Image" /></td>-->
+<!--<td><ul>-->
+<!--<li>Name: ebaza</li>-->
+<!--<li>Gender: ebaza</li>-->
+<!--<li>Short description: ebaza</li>-->
+<!--</ul></td>-->
+<!--</tr>-->
+<!--<tr>-->
+<!--<td><img src="adi.jpg" style="width:100px; height:100px" alt="Image" /></td>-->
+<!--<td><ul>-->
+<!--<li>Name: ahsajssaj</li>-->
+<!--<li>Gender: male</li>-->
+<!--<li>Short description: fgfgff</li>-->
+<!--</ul></td>-->
+<!--</tr>-->
+<!--</tbody>-->
+<!--</table>-->
+

@@ -31,20 +31,21 @@ public class PetServiceHelperImpl  implements PetServiceHelper{
 
 
     @Override
-    public Pet createPet(String name,String description,String sex,String age,String category ){
+    public Pet createPet(String name,String description,String gender,String age,String category,String email ){
 
         Pet pet=new Pet();
         pet.name=name;
         pet.description=description;
-        pet.sex=sex;
+        pet.gender=gender;
         pet.age=age;
         pet.category=category;
+        pet.email=email;
 
         return petRepository.save(pet);
     }
 
     @Override
-    public PetPicture addPetPicture(int Id, byte[] bytes, String contentType) throws SQLException {
+    public PetPicture addPetPicture(Integer Id, byte[] bytes, String contentType) throws SQLException {
         PetPicture mestoPicture = new PetPicture();
         mestoPicture.pet = petRepository.findOne(Id);
         FileEmbeddable picture = new FileEmbeddable();

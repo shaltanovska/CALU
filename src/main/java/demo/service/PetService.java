@@ -10,11 +10,12 @@ public interface PetService {
     Pet createPet(
             String name,
             String description,
-            String sex,
+            String gender,
             String age,
-            String category
+            String category,
+            String email
 
 
     );
-    PetPicture addPetPicture(int Id, byte[] bytes, String contentType) throws SQLException;
+    PetPicture addPetPicture(Integer Id, byte[] bytes, String contentType) throws SQLException;
 }

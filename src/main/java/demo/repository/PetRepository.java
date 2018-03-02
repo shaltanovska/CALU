@@ -8,11 +8,11 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 /**
  * Created by Aleksandar on 21.06.2017.
  */
-@RepositoryRestResource
-public interface PetRepository extends CrudRepository<Pet, Integer>,
+
+public interface PetRepository extends CrudRepository<Pet,Integer>,
         JpaSpecificationExecutor<Pet> {
 
-    Pet save(Pet tmesto);
+    Pet save(Pet pet);
 
 
 }

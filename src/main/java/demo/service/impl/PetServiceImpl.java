@@ -13,16 +13,16 @@ public class PetServiceImpl implements PetService {
 
 
     @Autowired
-    private PetServiceHelperImpl mestaServiceHelper;
+    private PetServiceHelperImpl petServiceHelper;
 
     @Override
-    public Pet createPet(String name,String description,String sex,String age,String category ){
+    public Pet createPet(String name,String description,String gender,String age,String category,String email ){
 
 
-        return mestaServiceHelper.createPet(name,description,sex,age,category);
+        return petServiceHelper.createPet(name,description,gender,age,category,email);
     }
     @Override
-    public PetPicture addPetPicture(int Id, byte[] bytes, String contentType) throws SQLException {
-        return mestaServiceHelper.addPetPicture(Id, bytes, contentType);
+    public PetPicture addPetPicture(Integer Id, byte[] bytes, String contentType) throws SQLException {
+        return petServiceHelper.addPetPicture(Id, bytes, contentType);
     }
 }

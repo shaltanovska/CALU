@@ -8,5 +8,5 @@ public interface QueryService {
 
     Iterable<Pet> findsite();
 
-    PetPicture getByMestoId(Long bookId);
+    PetPicture getByMestoId(Integer Id);
 }

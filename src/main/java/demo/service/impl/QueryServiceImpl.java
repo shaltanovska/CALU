@@ -33,7 +33,7 @@ public class QueryServiceImpl implements QueryService {
     }
 
     @Override
-    public PetPicture getByMestoId(Long Id) {
+    public PetPicture getByMestoId(Integer Id) {
         return petPictureRepository.findById(Id);
     }
 }
