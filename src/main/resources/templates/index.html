@@ -35,10 +35,19 @@
         .navbar-fixed-top {
             min-height: 60px;
         }
-        body {
 
-            background-color: rgb(255,255,138);
+        .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+            display: block;
+            height: 400px;
+            min-width: 100%;
+            width: 100%;
+            max-width: 100%;
+            line-height: 1;
         }
+        /*body {*/
+
+            /*background-color: rgb(255,255,138);*/
+        /*}*/
     </style>
 
 </head>
@@ -52,8 +61,8 @@
         </div>
         <ul class="nav navbar-nav navbar-right" >
             <li><a href="/index.html"><font color="#ff8031">Home</font></a></li>
-            <li><a href="/pets"><font color="#ff8031">Find your pet</font></a></li>
-            <li><a href="/kontakt"><font color="#ff8031">About</font></a></li>
+            <li><a href="/pets"><font color="#ff8031">Adopt a pet</font></a></li>
+            <li><a href="/kontakt"><font color="#ff8031">Contact</font></a></li>
         </ul>
     </div>
 </nav>
@@ -71,15 +80,29 @@
 <footer id="footer" style="background-color:#ff8031" >
     <div class="container-fluid">
         <div class="row" >
-            <h4 class="text-center"><i>You can find more about our mission by following us on the social media.</i></h4>
-            <br />
-            <ul class="list-inline text-center">
-                <li><a rel="nofollow" href="http://www.twitter.com" title="Twitter"><img class="img-footer" src="twitter.png" /></a>&nbsp;</li>
-                <li><a rel="nofollow" href="http://www.facebook.com" title="Facebook"><img class="img-footer" src="facebook.png" /></a>&nbsp;</li>
-                <li><a rel="nofollow" href="http://www.instagram.com" title="Instagram"><img class="img-footer" src="instagram.png"/></a></li>
-                <li><a rel="nofollow" href="http://www.youtube.com" title="You Tube"><img class="img-footer" src="youtube.png" /></a>&nbsp;</li>
+            <div class="col-sm-4">
+                <div class="caption text-center" style="background-color:#ff8031">
+                    <h4><b><i>Many thanks to:</i></b></h4>
+                </div>
+                <img src="eestec.png" class="img-circle center-block" style="width:60%" alt="Image" />
+            </div>
+            <div class="col-sm-4">
+                <div class="caption text-center" style="background-color:#ff8031">
+                    <h4 class="text-center"><b><i>You can find more about our mission by following us on the social media.</i></b></h4>
+                </div> <br /><br /><br />
+                <ul class="list-inline text-center">
+                    <li><a rel="nofollow" href="http://www.twitter.com" title="Twitter"><img class="img-footer" src="twitter.png" /></a>&nbsp;</li>
+                    <li><a rel="nofollow" href="http://www.facebook.com" title="Facebook"><img class="img-footer" src="facebook.png" /></a>&nbsp;</li>
+                    <li><a rel="nofollow" href="http://www.instagram.com" title="Instagram"><img class="img-footer" src="instagram.png" /></a></li>
+                    <li><a rel="nofollow" href="http://www.youtube.com" title="You Tube"><img class="img-footer" src="youtube.png" /></a>&nbsp;</li>
 
-            </ul>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <br /><br /><br />
+                <img src="codeapp.jpg" class="img-circle center-block" style="width:30%" alt="Image" />
+            </div>
+
         </div>
         <br/>
     </div>
